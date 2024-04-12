@@ -7,7 +7,7 @@
                 <div class="section-title  text-center">
                     <h2>List Mobil</h2>
                     <span class="title-line"><i class="fa fa-car"></i></span>
-                    <p>Daftar List Mobil Pada Rental Kami.</p>
+                    <p>Daftar Mobil Pada Rental Kami.</p>
                 </div>
             </div>
             <!-- Page Title End -->

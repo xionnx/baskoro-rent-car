@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--=== Favicon ===-->
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/assets_shop/img/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/assets_shop/img/logobrc.ico" type="image/x-icon" />
 
     <title><?= $title ?></title>
 
@@ -81,7 +81,7 @@
                         <div class="header-social-icons">
                             <a href="javascript:;"><i class="fa fa-facebook"></i></a>
                             <a href="javascript:;"><i class="fa fa-instagram"></i></a>
-                            <a href="javascript:;"><i class="fa fa-whatsapp"></i></a>
+                            <a href="https://wa.me/62895322882891"><i class="fa fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
