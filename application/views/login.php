@@ -88,9 +88,7 @@
 								document.write(new Date().getFullYear());
 							</script>
               <div class="mt-3">
-                <a href="javascript:;">Ketentuan Layanan</a>
-                <div class="bullet"></div>
-                <a href="javascript:;">Kebijakan Privasi</a>
+                <a href="<?= base_url('customer/rental/faqs'); ?>">Ketentuan Layanan</a>
               </div>
             </div>
           </div>

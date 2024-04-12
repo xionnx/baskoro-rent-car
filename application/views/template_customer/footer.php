@@ -11,7 +11,7 @@
             <div class="widget-body">
               <img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" width="70" class="ml-3" alt="JSOFT">
               <p>Jasa Sewa Mobil Depok Lengkap Mobil Terbaru Harga Murah & Bersaing di Area Depok</p>
-              <a href="https://goo.gl/maps/t4iN1jte4TTTUTVZ7" class="map-show" target="_blank"><i class="fa fa-map"></i> Lihat Lokasi</a>
+              <a href="https://maps.app.goo.gl/wekC2K1YejnNN7xU6" class="map-show" target="_blank"><i class="fa fa-map"></i> Lihat Lokasi</a>
             </div>
           </div>
         </div>

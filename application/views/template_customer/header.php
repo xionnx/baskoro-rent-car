@@ -96,7 +96,7 @@
                     <!--== Logo Start ==-->
                     <div class="col-lg-4">
                         <a href="<?= base_url('customer/dashboard') ?>" class="logo">
-                            <img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" width="70" alt="JSOFT">
+                            <img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" width="50" alt="JSOFT">
                         </a>
                     </div>
                     <!--== Logo End ==-->
