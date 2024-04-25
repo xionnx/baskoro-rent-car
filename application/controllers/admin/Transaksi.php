@@ -9,6 +9,7 @@ class Transaksi extends CI_Controller
         check_admin();
         $this->load->model('pesan_model');
         $this->load->model('transaksi_model');
+        $this->load->model('mobil_model');
     }
 
     public function index()
@@ -43,7 +44,7 @@ class Transaksi extends CI_Controller
         $id_user = $this->input->post('id_user');
         $id_mobil = $this->input->post('id_mobil');
         $tanggal_sewa = $this->input->post('tgl_sewa');
-        $tanggal_kembali = $this->input->post('tgl_kembali');
+        $tanggal_kembali = $this->input->post('tanggal$tanggal_kembali');
         $harga_mobil = $this->input->post('harga');
         $selisih_hari = ((abs(strtotime($tanggal_sewa) - strtotime($tanggal_kembali))) / (60 * 60 * 24));
         $total_sewa = $harga_mobil * $selisih_hari;
@@ -106,7 +107,7 @@ class Transaksi extends CI_Controller
         $id_user = $this->input->post('id_user');
         $id_mobil = $this->input->post('id_mobil');
         $tanggal_sewa = $this->input->post('tgl_sewa');
-        $tanggal_kembali = $this->input->post('tgl_kembali');
+        $tanggal_kembali = $this->input->post('tanggal$tanggal_kembali');
         $harga_mobil = $this->input->post('harga');
         $selisih_hari = ((abs(strtotime($tanggal_sewa) - strtotime($tanggal_kembali))) / (60 * 60 * 24));
         $total_sewa = $harga_mobil * round($selisih_hari);
@@ -123,7 +124,7 @@ class Transaksi extends CI_Controller
             'pickup' => $pickup
         );
 
-        $where2 = array('id_mobil' => $data->id_mobil);
+        $where2 = array('id_mobil' => $data['id_mobil']);
 
         $data2 = array('status_mobil' => '0');
 
@@ -278,4 +279,48 @@ class Transaksi extends CI_Controller
             redirect('admin/laporan', 'refresh');
         }
     }
+
+    public function konfirmasi_transaksi($id){
+        // $where = array('id_transaksi' => $id);
+        $data['transaksi'] = $this->db->query("SELECT * FROM transaksi WHERE id_transaksi='$id'")->result();
+        $this->load->view('template_admin/header');
+        $this->load->view('template_admin/sidebar');
+        $this->load->view('admin/konfirmasi_transaksi', $data);
+        $this->load->view('template_admin/footer');
+      }
+    
+      public function konfirmasi_transaksi_aksi(){
+        $id                  = $this->input->post('id_transaksi');
+        $id_mobil            = $this->input->post('id_mobil');
+        $tanggal_pengembalian    = $this->input->post('tanggal_pengembalian');
+        // $status_rental       = $this->input->post('status_rental');
+        // $status_pengembalian = $this->input->post('status_pengembalian');
+        $tanggal_kembali         = $this->input->post('tanggal_kembali');
+        $denda               = $this->input->post('denda');
+        $mobil              = $this->mobil_model->get_mobil_by_id($id_mobil);
+
+        $x = strtotime($tanggal_pengembalian);
+        $y = strtotime($tanggal_kembali);
+        $selisih = abs($x - $y)/(60*60*24);
+        $total_denda = $selisih * $mobil->denda;
+    
+        $data = array(
+          'tanggal_pengembalian'    => $tanggal_pengembalian,
+          'status'       => 2,
+          'total_denda'         => $total_denda
+        );
+        $data2 = array('status_mobil' => 1);
+    
+        $where  = array('id_transaksi' => $id);
+        $where2 = array('id_mobil' => $id_mobil);
+    
+        $this->transaksi_model->edit_data('transaksi', $data, $where);
+        $this->transaksi_model->edit_data('mobil', $data2, $where2);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Transaksi berhasil diupdate
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button></div>');
+        redirect('admin/transaksi');
+      }
 }

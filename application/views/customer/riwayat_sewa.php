@@ -65,19 +65,15 @@
                                             <?php if ($ts->status == 0 || $ts->status_pembayaran == 0 || $ts->status_pembayaran == 1) { ?>
                                                 -
                                             <?php } elseif ($ts->status == 1) { ?>
-                                                <a class="btn btn-sm btn-primary" href="<?= base_url('customer/rental/pengembalian_mobil/') . $ts->id_transaksi ?>"><i class="fa fa-flag"></i> Pengembalian
-                                                </a>
+                                                <span class="btn btn-sm btn-warning"><i class="fa fa-flag"></i> Mobil Belum Dikembalikan
+                                                </span>
                                             <?php  } else { ?>
                                                 <span class='btn btn-sm btn-success'><i class="fa fa-check"></i> Mobil Telah Dikembalikan</span>
                                             <?php  } ?>
                                         </td>
                                         <td>
                                             <?php if ($ts->status == 1) { ?>
-                                                <a href="<?= base_url('customer/rental/batal_sewa/') . $ts->id_transaksi ?>" onclick="return confirm('Yakin ingin membatalkan sewa?')" class="btn btn-sm btn-dark"><i class="fa fa-times"></i> Batal Sewa</a>
-                                            <?php } elseif ($ts->status == 2 || $ts->status == 0) { ?>
-                                                <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#batal">
-                                                    <i class="fa fa-times"></i> Batal Sewa
-                                                </button>
+                                                <a href="<?= base_url('customer/rental/batal_sewa/') . $ts->id_transaksi ?>" onclick="return confirm('Yakin ingin membatalkan sewa?')" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Batal Sewa</a>
                                             <?php } ?>
                                         </td>
                                         <td>

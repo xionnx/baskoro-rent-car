@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 class mobil_model extends CI_Model
 {
     public function get_data($table)
@@ -42,6 +44,19 @@ class mobil_model extends CI_Model
 
         if ($hasil->num_rows() > 0) {
             return $hasil->result();
+        } else {
+            return false;
+        }
+    }
+
+    public function get_mobil_by_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('mobil');
+        $hasil = $this->db->where('id_mobil', $id)->get();
+        
+        if ($hasil->num_rows() > 0) {
+            return $hasil->result()[0];
         } else {
             return false;
         }
