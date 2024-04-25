@@ -49,7 +49,8 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="<?= base_url('admin/transaksi/konfirmasi_pembayaran/') . $ts->id_transaksi ?>" class="btn btn-sm btn-light tombol-konfirmasi"><i class="fas fa-check"></i></a>
+                                        <a href="<?= base_url('admin/transaksi/konfirmasi_pembayaran/') . $ts->id_transaksi ?>" class="btn btn-sm btn-light tombol-konfirmasi" data-toggle="tooltip" data-placement="top" title="Terima Pembayaran"><i class="fas fa-check"></i></a>
+                                        <a href="<?= base_url('admin/transaksi/delete_transaksi/') . $ts->id_transaksi ?>" class="btn btn-sm btn-danger tombol-hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endif ?>
