@@ -31,7 +31,7 @@
 								<div class="card">
 									<div class="card-header" id="headingOne">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-												<span>Bagaimana cara menyewa di Baskoro Rent Car ?</span>
+												<span class="text-white">Bagaimana cara menyewa di Baskoro Rent Car ?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
@@ -49,7 +49,7 @@
 								<div class="card">
 									<div class="card-header" id="headingTwo">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-												<span>Bagaimana cara menghubungi Baskoro Rent Car ?</span>
+												<span class="text-white">Bagaimana cara menghubungi Baskoro Rent Car ?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
@@ -81,7 +81,7 @@
 								<div class="card">
 									<div class="card-header" id="heading4">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-												<span>Sistem pembayarannya bagaimana?</span>
+												<span class="text-white">Sistem pembayarannya bagaimana?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
@@ -112,16 +112,16 @@
 								<div class="card">
 									<div class="card-header" id="heading5">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-												<span>Bagaimana cara mengembalikan mobil yang sedang disewa?</span>
+												<span class="text-white">Bagaimana cara mengembalikan mobil yang sedang disewa?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
 									</div>
 									<div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion_2">
 										<div class="card-body">
-											Untuk mengembalikan mobil yang sedang disewa bisa menuju halaman 'Riwayat Sewa' dengan menekan tombol dibawah:
+											Untuk mengembalikan mobil yang sedang disewa bisa menghubungi Admin terlebih dahulu :
 											<br>
-											<a href="<?= base_url('customer/rental/riwayat_sewa') ?>" class="rent-btn"><i class="fa fa-tag"></i> Riwayat Sewa</a>
+											<a href='https://wa.me/62895322882891' class="rent-btn"><i class="fa fa-whatsapp"></i> Whatsapp</a>
 											<br>
 											<br>
 											<b>Setelah itu cari kolom 'Pengembalian Mobil' pada tabel 'Riwayat Sewa'.</b>
@@ -132,7 +132,7 @@
 								<div class="card">
 									<div class="card-header" id="heading6">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-												<span>Bagaimana cara membatalkan penyewaan?</span>
+												<span class="text-white">Bagaimana cara membatalkan penyewaan?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
@@ -152,7 +152,7 @@
 								<div class="card">
 									<div class="card-header" id="heading7">
 										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-												<span>Bagaimana cara menukarkan mobil yang rusak saat menyewa?</span>
+												<span class="text-white">Bagaimana cara menukarkan mobil yang rusak saat menyewa?</span>
 												<i class="fa fa-angle-down"></i>
 												<i class="fa fa-angle-up"></i>
 											</button></h5>
@@ -186,7 +186,7 @@
 				<div class="sidebar-content-wrap m-t-50">
 					<!-- Single Sidebar Start -->
 					<div class="single-sidebar">
-						<h3>Untuk Informasi Lengkapnya</h3>
+						<h3  class="text-white">Untuk Informasi Lengkapnya</h3>
 
 						<div class="sidebar-body">
 							<p>Buka:</p>
@@ -200,7 +200,7 @@
 
 					<!-- Single Sidebar Start -->
 					<div class="single-sidebar">
-						<h3>Sosial Media</h3>
+						<h3 class="text-white">Sosial Media</h3>
 
 						<div class="sidebar-body">
 							<div class="social-icons text-center">
