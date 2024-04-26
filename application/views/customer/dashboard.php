@@ -5,8 +5,11 @@
                 <div class="col-lg-12 text-center">
                     <div class="slideshowcontent">
                         <div class="display-table">
-                            <div class="display-table-cell">
-                                <h1>BASKORO RENT CAR</h1>
+                        <div class="display-table-cell">
+                                <h1 class="animation-waves">
+                                    <span>BASKORO RENT CAR</span>
+                                    <span>BASKORO RENT CAR</span>
+                                </h1><br>
                                 <p>JASA SEWA MOBIL DI DEPOK <br> DENGAN HARGA YANG TERJANGKAU</p>
                                 <img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" width="250" class="ml-3 mt-4" alt="JSOFT">
                             </div>
