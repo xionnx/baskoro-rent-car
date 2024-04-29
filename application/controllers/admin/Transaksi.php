@@ -231,10 +231,35 @@ class Transaksi extends CI_Controller
         );
 
         $this->transaksi_model->edit_data('transaksi', $data, $where);
-
         $this->session->set_flashdata('pesan', '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
         Pembayaran Berhasil Dikonfirmasi
+        <button transaksi="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button></div>');
+        redirect('admin/transaksi/menunggu_konfirmasi');
+    }
+
+    public function tolak_pembayaran($id)
+    {
+        $where = array('id_transaksi' => $id);
+        $data = $this->transaksi_model->get_where($where, 'transaksi')->row();
+
+        $where2 = array('id_mobil' => $data->id_mobil);
+
+        $data2 = array('status_mobil' => '1');
+
+        $data = array(
+            'status' => '0',
+            'status_pembayaran' => '3'
+        );
+
+        $this->transaksi_model->edit_data('mobil', $data2, $where2);
+        $this->transaksi_model->edit_data('transaksi', $data, $where);
+
+        $this->session->set_flashdata('pesan', '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Pembayaran Berhasil Ditolak
         <button transaksi="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button></div>');

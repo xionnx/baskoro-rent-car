@@ -99,6 +99,8 @@
 									echo "Menunggu Konfirmasi";
 								} elseif (($l->status_pembayaran) == 2) {
 									echo "Sudah Dibayar";
+								} elseif (($l->status_pembayaran) == 3) {
+									echo "Ditolak";
 								} else {
 									echo "Batal";
 								} ?>

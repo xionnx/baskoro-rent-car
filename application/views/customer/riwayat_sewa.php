@@ -57,6 +57,8 @@
                                                 <span class='btn btn-sm btn-info'><i class="fa fa-info"></i> Menunggu Konfirmasi</span>
                                             <?php } elseif ($ts->status_pembayaran == 2) { ?>
                                                 <span class='btn btn-sm btn-success'><i class="fa fa-check"></i> Sudah Dibayar</span>
+                                            <?php } elseif ($ts->status_pembayaran == 3) { ?>
+                                                <span class='btn btn-sm btn-danger'><i class="fa fa-ban"></i> Ditolak</span>
                                             <?php } else { ?>
                                                 <span class='btn btn-sm btn-dark'><i class="fa fa-times"></i> Batal</span>
                                             <?php } ?>
@@ -73,7 +75,7 @@
                                         </td>
                                         <td>
                                             <?php if ($ts->status == 1) { ?>
-                                                <a href="<?= base_url('customer/rental/batal_sewa/') . $ts->id_transaksi ?>" onclick="return confirm('Yakin ingin membatalkan sewa?')" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Batal Sewa</a>
+                                                <button href="<?= base_url('customer/rental/batal_sewa/') . $ts->id_transaksi ?>" class="btn btn-sm btn-danger tombol-batalsewa"><i class="fa fa-times"></i> Batal Sewa</button>
                                             <?php } ?>
                                         </td>
                                         <td>

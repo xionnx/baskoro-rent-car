@@ -99,6 +99,8 @@
 											echo "<span class='badge badge-info'>Menunggu Konfirmasi</span>";
 										} elseif (($l->status_pembayaran) == 2) {
 											echo "<span class='badge badge-success'>Sudah Dibayar</span>";
+										} elseif (($l->status_pembayaran) == 3) {
+											echo "<span class='badge badge-danger'>Ditolak</span>";
 										} else {
 											echo "<span class='badge badge-dark'>Batal</span>";
 										} ?>

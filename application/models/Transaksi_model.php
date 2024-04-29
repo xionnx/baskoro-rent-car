@@ -55,4 +55,18 @@ class transaksi_model extends CI_Model
     {
         $this->db->query("update mobil set status_mobil = 0 where id_mobil=$where");
     }
+
+    public function get_transaksi_by_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('transaksi');
+        $hasil = $this->db->where('id_transaksi', $id)->get();
+        
+        if ($hasil->num_rows() > 0) {
+            return $hasil->result()[0];
+        } else {
+            return false;
+        }
+    }
 }
+

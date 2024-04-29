@@ -102,6 +102,9 @@
 <!--=== Mian Js ===-->
 <script src="<?= base_url() ?>assets/assets_shop/js/main.js"></script>
 
-</body>
+<!-- Sweetalert JS -->
+<script src="<?= base_url('assets/assets_stisla'); ?>/assets/js/myscript.js"></script>
+<script src="<?= base_url('assets/assets_stisla'); ?>/assets/js/sweetalert2.all.min.js"></script>
 
+</body>
 </html>

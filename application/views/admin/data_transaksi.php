@@ -78,6 +78,8 @@
                                             echo "<span class='badge badge-info'>Menunggu Konfirmasi</span>";
                                         } elseif (($ts->status_pembayaran) == 2) {
                                             echo "<span class='badge badge-success'>Sudah Dibayar</span>";
+                                        } elseif (($ts->status_pembayaran) == 3) {
+                                            echo "<span class='badge badge-danger'>Ditolak</span>";
                                         } else {
                                             echo "<span class='badge badge-dark'>Batal</span>";
                                         } ?>
@@ -85,7 +87,6 @@
                                     <td>
                                         <a href="<?= base_url('admin/transaksi/delete_transaksi/') . $ts->id_transaksi ?>" class="btn btn-sm btn-danger tombol-hapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="far fa-trash-alt"></i></a>
                                         <?php if ($ts->status == 0 || $ts->status_pembayaran == 0 || $ts->status_pembayaran == 1) { ?>
-                                                    -
                                                 <?php } elseif ($ts->status == 1) { ?>
                                                     <a class="btn btn-sm btn-success" href="<?= base_url('admin/transaksi/konfirmasi_transaksi/') . $ts->id_transaksi ?>"  data-toggle="tooltip" data-placement="top" title="Konfirmasi Pengembalian"><i class="fa fa-check"></i></a>
                                                 <?php } ?>

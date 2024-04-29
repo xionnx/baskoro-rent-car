@@ -135,6 +135,8 @@ class Rental extends CI_Controller
         $data['id_transaksi'] = $id;
         $data['title'] = 'Upload Bukti Pembayaran';
 
+        $data['data_transaksi']=$this->transaksi_model->get_transaksi_by_id($id);
+        $data['mobil']=$this->mobil_model->get_mobil_by_id($data['data_transaksi']->id_mobil);
         $this->load->view('template_customer/header', $data);
         $this->load->view('customer/konfirmasi_pembayaran', $data);
         $this->load->view('template_customer/footer');
@@ -155,6 +157,8 @@ class Rental extends CI_Controller
 
         if (!$this->upload->do_upload('bukti_pembayaran')) {
             echo "<script>alert('Bukti Pembayaran Gagal di-Upload')</script>";
+            echo "<script>window.location='" . base_url('customer/rental/konfirmasi_pembayaran/'. $id) . "';</script>";
+            return;
         } else {
             $bukti_pembayaran = $this->upload->data('file_name');
             $this->session->set_flashdata('pesan', '
@@ -194,7 +198,7 @@ class Rental extends CI_Controller
 
         $data = array(
             'status' => '0',
-            'status_pembayaran' => '3'
+            'status_pembayaran' => '4'
         );
 
         $this->transaksi_model->edit_data('mobil', $data2, $where2);
