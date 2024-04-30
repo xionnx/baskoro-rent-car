@@ -51,6 +51,10 @@ class Rental extends CI_Controller
     {
         check_not_login();
 
+        ?>
+            <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+            <body></body>
+        <?php
         $id_mobil = $this->input->post('id_mobil');
         $tgl_sewa = strtotime($this->input->post('tanggal_sewa'));
         $tgl_sewa = date("Y-m-d", $tgl_sewa);
@@ -98,7 +102,15 @@ class Rental extends CI_Controller
             'batas_bayar' => $batas_bayar
         );
 
-        echo "<script>alert('Mobil Berhasil Dibooking')</script>";
+        ?>
+            <script>
+                Swal({
+                        title: 'Berhasil',
+                        type: 'success',
+                        text: 'Mobil berhasil Dibooking!'
+                    })
+            </script>;
+        <?php
         $data['title'] = 'Detail Sewa';
         $this->load->view('template_customer/header', $data);
         $this->load->view('customer/detail_sewa', $data);

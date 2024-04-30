@@ -35,7 +35,7 @@
 							</div>
 
 							<div class="card-body">
-								<form action="<?= base_url('register/tambah_user_simpan_customer') ?>" autocomplete="off" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate="">
+								<form action="<?= base_url('register/tambah_user_simpan_customers') ?>" autocomplete="off" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate="">
 									<div class="row">
 										<div class="col-6">
 											<div class="form-group">
@@ -63,9 +63,10 @@
 														</div>
 													</div>
 													<input type="email" name="email" class="form-control" required>
-													<div class="invalid-feedback">
-														Email Tidak Boleh Kosong
-													</div>
+												</div>
+												<?= form_error('email', '<div class="text-small text-danger">', '</div>') ?>
+												<div class="invalid-feedback">
+													Email Tidak Boleh Kosong
 												</div>
 											</div>
 										</div>
@@ -97,6 +98,7 @@
 														</div>
 													</div>
 													<input type="password" name="confirm_password" class="form-control" data-indicator="pwindicator" required>
+													<?= form_error('confirm_password', '<div class="text-small text-danger">', '</div>') ?>
 													<div class="invalid-feedback">
 														Password Konfirmasi Tidak Boleh Kosong
 													</div>

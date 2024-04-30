@@ -20,6 +20,10 @@ class Auth extends CI_Controller
         $post = $this->input->post(null, TRUE);
         if (isset($post['login'])) {
             $query = $this->user_model->login($post);
+            ?>
+            <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+            <body></body>
+            <?php
             if ($query->num_rows() > 0) {
                 $row = $query->row();
                 $params = array(
@@ -30,15 +34,29 @@ class Auth extends CI_Controller
                 );
                 $this->session->set_userdata($params);
                 if ($row->level == 1) {
-                    echo "<script>
-                        alert('Selamat, Login Berhasil');
-                        window.location='" . site_url('admin/dashboard') . "';
-                    </script>";
+                    ?>
+                    <script>
+                        Swal({
+                            title: 'Login',
+                            type: 'success',
+                            text: 'Berhasil login sebagai Admin!'
+                        }).then((result => {
+                            window.location ='<?= site_url('admin/dashboard') ?>';
+                        }))
+                    </script>;
+                    <?php
                 } else {
-                    echo "<script>
-                        alert('Selamat, Login Berhasil');
-                        window.location='" . site_url('customer/dashboard') . "';
-                    </script>";
+                    ?>
+                    <script>
+                        Swal({
+                            title: 'Login',
+                            type: 'success',
+                            text: 'Berhasil login!'
+                        }).then((result => {
+                            window.location ='<?= site_url('customer/dashboard') ?>';
+                        }))
+                    </script>;
+                    <?php
                 }
             } else {
                 $this->session->set_flashdata('pesan', '
@@ -47,6 +65,7 @@ class Auth extends CI_Controller
                 <span aria-hidden="true">&times;</span></button></div>');
                 redirect('auth/login');
             }
+            
         }
     }
 
