@@ -33,7 +33,9 @@ class Register extends CI_Controller
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('scan_ktp')) {
-                echo "Scan KTP user Gagal Di-Upload";
+                echo "<script>alert('Scan KTP Gagal di Upload')</script>";
+                echo "<script>window.location='" . base_url('register') . "'; </script>";
+                return;
             } else {
                 $scan_ktp = $this->upload->data('file_name');
             }
@@ -48,7 +50,9 @@ class Register extends CI_Controller
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('scan_kk')) {
-                echo "Scan KK user Gagal Di-Upload";
+                echo "<script>alert('Scan KK Gagal di Upload')</script>";
+                echo "<script>window.location='" . base_url('register') . "'; </script>";
+                return;
             } else {
                 $scan_kk = $this->upload->data('file_name');
             }

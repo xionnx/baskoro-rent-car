@@ -123,3 +123,15 @@ $(".tombol-batalsewa").on("click", function (e) {
 		}
 	});
 });
+
+$(".tombol-loginberhasil").on("click", function (e) {
+	e.preventDefault();
+	const href = $(this).attr("href");
+
+	Swal({
+		title: "Login Berhasil",
+		text: "Silahkan Lanjut ke Website kami",
+		icon: "success",
+		confirmButtonText: "Cool",
+	});
+});

@@ -186,7 +186,7 @@
 															<i class="fas fa-address-card"></i>
 														</div>
 													</div>
-													<input type="file" name="scan_ktp" class="form-control" required>
+													<input type="file" name="scan_ktp" accept="image/*" class="form-control" required>
 													<div class="invalid-feedback">
 														Scan KTP Tidak Boleh Kosong
 													</div>
@@ -202,7 +202,7 @@
 															<i class="fas fa-address-card"></i>
 														</div>
 													</div>
-													<input type="file" name="scan_kk" class="form-control" required>
+													<input type="file" name="scan_kk" accept="image/*" class="form-control" required>
 													<div class="invalid-feedback">
 														Scan KK Tidak Boleh Kosong
 													</div>
