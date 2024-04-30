@@ -74,8 +74,10 @@
                                             <?php  } ?>
                                         </td>
                                         <td>
-                                            <?php if ($ts->status == 1) { ?>
+                                            <?php if ($ts->status_pembayaran == 0 || $ts->status_pembayaran == 1) { ?>
                                                 <button href="<?= base_url('customer/rental/batal_sewa/') . $ts->id_transaksi ?>" class="btn btn-sm btn-danger tombol-batalsewa"><i class="fa fa-times"></i> Batal Sewa</button>
+                                            <?php } elseif ($ts->status_pembayaran == 2 || $ts->status_pembayaran == 3 || $ts->status_pembayaran == 4) { ?>
+                                                <span>-</span>
                                             <?php } ?>
                                         </td>
                                         <td>
