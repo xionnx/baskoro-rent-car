@@ -100,7 +100,7 @@ CREATE TABLE `transaksi` (
   `total_denda` int(11) NOT NULL,
   `pickup` int(11) NOT NULL COMMENT '0. ambil sendiri, 1. pickup sesuai alamat',
   `status` int(1) NOT NULL COMMENT '0. batal, 1. disewa, 2. selesai',
-  `status_pembayaran` int(1) NOT NULL COMMENT '0. belum dibayar, 1. menunggu konfirmasi, 2. sudah dibayar, 3. batal',
+  `status_pembayaran` int(1) NOT NULL COMMENT '0. belum dibayar, 1. menunggu konfirmasi, 2. sudah dibayar, 3. ditolak, 4. batal',
   `bukti_pembayaran` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
