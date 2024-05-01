@@ -160,20 +160,23 @@
 			animationDuration: 20000,
 			slides: [
 				{
-					src: "../assets/assets_shop/img/slider-img/slider-img-1.jpg",
+					src: "http://localhost/baskoro-rent-car/assets/assets_shop/img/slider-img/slider-img-1.jpg",
 				},
 				{
-					src: "../assets/assets_shop/img/slider-img/slider-img-2.jpg",
+					src: "http://localhost/baskoro-rent-car/assets/assets_shop/img/slider-img/slider-img-2.jpg",
 				},
 				{
-					src: "../assets/assets_shop/img/slider-img/slider-img-3.jpg",
+					src: "http://localhost/baskoro-rent-car/assets/assets_shop/img/slider-img/slider-img-3.jpg",
 				},
 				{
-					src: "../assets/assets_shop/img/slider-img/slider-img-4.jpg",
+					src: "http://localhost/baskoro-rent-car/assets/assets_shop/img/slider-img/slider-img-4.jpg",
 				},
 				{
-					src: "../assets/assets_shop/img/slider-img/slider-img-5.jpg",
+					src: "http://localhost/baskoro-rent-car/assets/assets_shop/img/slider-img/slider-img-5.jpg",
 				},
+				// {
+				// 	src: "../assets/assets_shop/img/slider-img/slider-img-5.jpg",
+				// },
 			],
 		}); //Home Page Two Slideshow
 
