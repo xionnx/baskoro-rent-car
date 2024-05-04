@@ -83,6 +83,10 @@ class Register extends CI_Controller
 
     public function tambah_user_simpan_customers(){
         //Validation Rules
+        ?>
+        <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+        <body></body>
+        <?php
         $this->load->model('user_model');
         $this->form_validation->set_rules('nama','Nama','trim|required');
         $this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]', [
@@ -116,8 +120,19 @@ class Register extends CI_Controller
         
                     $this->load->library('upload', $config);
                     if (!$this->upload->do_upload('scan_ktp')) {
-                        echo "<script>alert('Scan KTP Gagal di Upload')</script>";
-                        echo "<script>window.location='" . base_url('register') . "'; </script>";
+                        ?>
+                        <script>
+                            Swal({
+                                title: 'Gagal',
+                                type: 'error',
+                                text: 'Scan KTP Gagal di Upload!'
+                            }).then((result => {
+                                window.location ='<?= site_url('register') ?>';
+                            }))
+                        </script>;
+                        <?php
+                        // echo "<script>alert('Scan KTP Gagal di Upload')</script>";
+                        // echo "<script>window.location='" . base_url('register') . "'; </script>";
                         return;
                     } else {
                         $scan_ktp = $this->upload->data('file_name');
@@ -133,8 +148,19 @@ class Register extends CI_Controller
         
                     $this->load->library('upload', $config);
                     if (!$this->upload->do_upload('scan_kk')) {
-                        echo "<script>alert('Scan KK Gagal di Upload')</script>";
-                        echo "<script>window.location='" . base_url('register') . "'; </script>";
+                        ?>
+                        <script>
+                            Swal({
+                                title: 'Gagal',
+                                type: 'error',
+                                text: 'Scan KK Gagal di Upload!'
+                            }).then((result => {
+                                window.location ='<?= site_url('register') ?>';
+                            }))
+                        </script>;
+                        <?php
+                        // echo "<script>alert('Scan KK Gagal di Upload')</script>";
+                        // echo "<script>window.location='" . base_url('register') . "'; </script>";
                         return;
                     } else {
                         $scan_kk = $this->upload->data('file_name');

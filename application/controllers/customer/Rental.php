@@ -156,6 +156,10 @@ class Rental extends CI_Controller
 
     public function konfirmasi_pembayaran_simpan()
     {
+        ?>
+        <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+        <body></body>
+        <?php
         check_not_login();
 
         $id = $this->input->post('id_transaksi');
@@ -168,8 +172,19 @@ class Rental extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('bukti_pembayaran')) {
-            echo "<script>alert('Bukti Pembayaran Gagal di-Upload')</script>";
-            echo "<script>window.location='" . base_url('customer/rental/konfirmasi_pembayaran/'. $id) . "';</script>";
+            ?>
+            <script>
+                Swal({
+                    title: 'Gagal',
+                    type: 'error',
+                    text: 'Bukti Pembayaran gagal di-Upload!'
+                }).then((result => {
+                    window.location ='<?= site_url('customer/rental/konfirmasi_pembayaran/' . $id) ?>';
+                }))
+            </script>;
+            <?php
+            // echo "<script>alert('Bukti Pembayaran Gagal di-Upload')</script>";
+            // echo "<script>window.location='" . base_url('customer/rental/konfirmasi_pembayaran/'. $id) . "';</script>";
             return;
         } else {
             $bukti_pembayaran = $this->upload->data('file_name');

@@ -31,6 +31,9 @@
                         <h2>Mobil Yang Kami Sediakan</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
                     </div>
+                    <div class="text-center" style="position: relative; height: 65px; bottom: 65px">
+                        <a class="rent-btn text-center" href="<?= base_url('customer/dashboard/list_mobil')?>"  data-toggle="tooltip" data-placement="top" title="Sewa Mobil">Sewa Mobil Sekarang</a>
+                    </div>
                 </div>
                 <!-- Section Title End -->
             </div>

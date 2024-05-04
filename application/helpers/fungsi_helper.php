@@ -13,13 +13,24 @@ function check_already_login()
 
 function check_not_login()
 {
+    ?>
+    <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+    <body></body>
+    <?php
     $ci = &get_instance();
     $user_session = $ci->session->userdata('id_user');
     if (!$user_session) {
-        echo "<script>
-        alert('Silahkan Melakukan Login Terlebih Dahulu');
-        window.location='" . site_url('auth/login') . "';
-        </script>";
+        ?>
+        <script>
+            Swal({
+                title: 'Anda Belum Login',
+                type: 'error',
+                text: 'Silahkan Login terlebih dahulu!'
+            }).then((result => {
+                window.location ='<?= site_url('auth/login') ?>';
+            }))
+        </script>;
+        <?php
     }
 }
 
