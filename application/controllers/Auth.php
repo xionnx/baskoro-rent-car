@@ -30,6 +30,7 @@ class Auth extends CI_Controller
                     'id_user' => $row->id_user,
                     'email' => $row->email,
                     'nama' => $row->nama,
+                    'alamat' => $row->alamat,
                     'level' => $row->level
                 );
                 $this->session->set_userdata($params);
@@ -102,6 +103,51 @@ class Auth extends CI_Controller
             $id = array('id_user' => $this->session->userdata('id_user'));
 
             $this->user_model->ubah_password($id, $data, 'user');
+            $this->session->set_flashdata('pesan', '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Password berhasil diubah, silahkan login.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button></div>');
+            redirect('auth/login');
+        }
+    }
+
+    public function ubah_profile()
+    {
+        $data['title'] = 'Ubah Profile';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['alamat' => $this->session->userdata('alamat')])->row_array();
+        $this->load->view('ubah_profile', $data);
+    }
+
+    public function ubah_profile_aksi()
+    {
+        $nama_baru = $this->input->post('nama_baru');
+        $alamat_baru = $this->input->post('alamat_baru');
+        $password_baru = $this->input->post('password_baru');
+        $password_confirm = $this->input->post('password_confirm');
+
+        $this->form_validation->set_rules('nama_baru', 'Nama Baru', 'required|trim|min_length[3]');
+        $this->form_validation->set_rules('alamat_baru', 'Alamat Baru', 'required|trim|min_length[3]');
+        if (!empty($password_baru)){
+            $this->form_validation->set_rules('password_baru', 'Password Baru', 'required|trim|min_length[3]|matches[password_confirm]');
+            $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|trim|min_length[3]|matches[password_baru]');
+        };
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['title'] = 'Ubah Profile';
+            // $this->load->view('ubah_profile', $data);
+            $this->ubah_profile($data);
+
+        } else {
+            $data = array(
+                'nama' => $nama_baru,
+                'alamat' => $alamat_baru);
+                if (isset($password_baru)){
+                    $data['password'] = md5($password_baru);
+                };
+            $id = array('id_user' => $this->session->userdata('id_user'));
+
+            $this->user_model->ubah_profile($id, $data, 'user');
             $this->session->set_flashdata('pesan', '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             Password berhasil diubah, silahkan login.<button type="button" class="close" data-dismiss="alert" aria-label="Close">

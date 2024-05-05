@@ -65,4 +65,10 @@ class User_model extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    public function ubah_profile($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }

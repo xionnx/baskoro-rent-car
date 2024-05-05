@@ -67,7 +67,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="<?= base_url('auth/ganti_password') ?>" class="dropdown-item has-icon">
-                <i class="fas fa-unlock"></i> Ganti Pasword
+                <i class="fas fa-unlock"></i> Ganti Password
               </a>
               <a href="<?= base_url('auth/logout') ?>" class="dropdown-item has-icon text-danger tombol-keluar">
                 <i class="fas fa-sign-out-alt"></i> Log Out
