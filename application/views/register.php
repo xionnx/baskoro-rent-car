@@ -63,11 +63,11 @@
 														</div>
 													</div>
 													<input type="email" name="email" class="form-control" required>
+													<div class="invalid-feedback">
+														Email Tidak Boleh Kosong
+													</div>
 												</div>
-												<?= form_error('email', '<div class="text-small text-danger">', '</div>') ?>
-												<div class="invalid-feedback">
-													Email Tidak Boleh Kosong
-												</div>
+												<?= form_error('email', '<div class="text-small text-danger">', '</div>'); ?>
 											</div>
 										</div>
 									</div>

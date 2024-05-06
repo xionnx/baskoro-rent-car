@@ -70,6 +70,12 @@
     }
 </script>
 
+<script type="text/javascript" rel="stylesheet"> 
+    $('document').ready(function() {
+        $(".alert").fadeIn(1000).fadeOut(5000);
+    });
+</script>
+
 </body>
 
 </html>

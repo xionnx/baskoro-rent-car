@@ -106,5 +106,11 @@
 <script src="<?= base_url('assets/assets_stisla'); ?>/assets/js/myscript.js"></script>
 <script src="<?= base_url('assets/assets_stisla'); ?>/assets/js/sweetalert2.all.min.js"></script>
 
+<script type="text/javascript"> 
+    $('document').ready(function() {
+        $(".alert").fadeIn(1000).fadeOut(5000);
+    });
+</script>
+
 </body>
 </html>

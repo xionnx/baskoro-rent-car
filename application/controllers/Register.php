@@ -83,17 +83,19 @@ class Register extends CI_Controller
 
     public function tambah_user_simpan_customers(){
         //Validation Rules
-        ?>
-        <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
-        <body></body>
-        <?php
         $this->load->model('user_model');
         $this->form_validation->set_rules('nama','Nama','trim|required');
-        $this->form_validation->set_rules('email','Email','trim|required|valid_email|is_unique[user.email]', [
+        $this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[user.email]', [
+            'valid_email' => 'Email yang anda masukkan tidak benar.',
+            'required' => 'Kolom email harus diisi!',
             'is_unique' => 'Email ini sudah terdaftar!'
         ]);
         $this->form_validation->set_rules('password','Password','required|matches[confirm_password]');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+        ?>
+        <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+        <body></body>
+        <?php
 
         if($this->form_validation->run() == FALSE){
             //Views
@@ -104,7 +106,6 @@ class Register extends CI_Controller
                 $nama          = $this->input->post('nama');
                 $email         = $this->input->post('email');
                 $password      = md5($this->input->post('password'));
-                $email         = $this->input->post('email');
                 $alamat        = $this->input->post('alamat');
                 $gender        = $this->input->post('gender');
                 $no_telp       = $this->input->post('no_telp');
