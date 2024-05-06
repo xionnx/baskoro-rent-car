@@ -142,7 +142,7 @@ class Auth extends CI_Controller
             $data = array(
                 'nama' => $nama_baru,
                 'alamat' => $alamat_baru);
-                if (isset($password_baru)){
+                if (!empty($password_baru)){
                     $data['password'] = md5($password_baru);
                 };
             $id = array('id_user' => $this->session->userdata('id_user'));
