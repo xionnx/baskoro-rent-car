@@ -85,6 +85,9 @@
                             <div class="input-submit float-left">
                                 <button class="bg-warning" type="submit"><i class="fa fa-car"></i> Sewa</button>
                             </div>
+                            <div class="input-submit float-left">
+                                <button class="bg-warning" type="submit" onclick="history.back()"><i class="fa fa-reply"></i> Kembali</button>
+                            </div>
                         </div>
                     </form>
                 </div>

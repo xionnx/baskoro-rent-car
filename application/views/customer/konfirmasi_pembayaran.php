@@ -33,7 +33,7 @@
                                     </tr>
                                     <tr>
                                         <td class="pr-3">Dengan Total Biaya Sewa</td>
-                                        <td class="pr-3">:      <?= $data_transaksi->total_sewa?></td>
+                                        <td class="pr-3">:      <?= format_rupiah($data_transaksi->total_sewa); ?></td>
                                     </tr>
                                 </table>
                                 <br>
