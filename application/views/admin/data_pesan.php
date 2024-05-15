@@ -8,7 +8,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-body">
-                <table class="table table-hover table-striped table-bordered" id="data_table">
+                <table class="table table-responsive-xl table-hover table-striped table-bordered" id="data_table">
                     <thead>
                         <tr align="center">
                             <th>No</th>
@@ -51,6 +51,8 @@
                 </table>
             </div>
         </div>
+
+        <?= $this->session->unset_userdata('pesan') ?>
 
     </section>
 </div>

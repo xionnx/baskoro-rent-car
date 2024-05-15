@@ -65,7 +65,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
                   <h4>Data Transaksi</h4>
@@ -123,7 +123,7 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="card card-hero">
                 <div class="card-header">
                   <div class="card-icon">
@@ -144,11 +144,9 @@
 
                         <a href="<?= base_url('admin/data_pesan') ?>" class="ticket-item">
                           <div class="ticket-title">
-                            <!-- isi pesan -->
                             <h4><?= $psn->isi_pesan ?></h4>
                           </div>
                           <div class="ticket-info">
-                            <!-- nama -->
                             <div><i class="far fa-user"></i> <?= $psn->nama ?></div>
                           </div>
                         </a>
@@ -162,6 +160,7 @@
                   </div>
                 </div>
               </div>
+            </div> -->
 
         </section>
       </div>

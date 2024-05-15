@@ -7,7 +7,7 @@
         <?= $this->session->flashdata('pesan') ?>
         <div class="card shadow mb-4">
             <div class="card-body">
-                <table class="table table-hover table-striped table-bordered" id="data_table">
+                <table class="table table-responsive-xl table-hover table-striped table-bordered" id="data_table">
                     <thead>
                         <tr align="center">
                             <th>No</th>
@@ -44,7 +44,7 @@
                                     <td><?= format_rupiah($ts->total_sewa) ?></td>
                                     <td><span class="badge badge-info">Menunggu Konfirmasi</span></td>
                                     <td>
-                                        <a href="<?= base_url() . 'assets/upload/bukti_pembayaran/' . $ts->bukti_pembayaran ?>">
+                                        <a href="<?= base_url() . 'assets/upload/bukti_pembayaran/' . $ts->bukti_pembayaran ?>" target="_blank">
                                             <img width="80px" src="<?= base_url() . 'assets/upload/bukti_pembayaran/' . $ts->bukti_pembayaran ?>">
                                         </a>
                                     </td>
@@ -59,6 +59,7 @@
                 </table>
             </div>
         </div>
+        <?= $this->session->unset_userdata('pesan') ?>
 
     </section>
 </div>

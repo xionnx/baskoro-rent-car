@@ -14,7 +14,7 @@
                         <i class="fas fa-print"></i> Cetak Laporan
                     </a>
                 </div>
-                <table class="table table-hover table-striped table-bordered" id="data_table">
+                <table class="table table-responsive-xl table-hover table-striped table-bordered" id="data_table">
                     <thead>
                         <tr align="center">
                             <th>No</th>

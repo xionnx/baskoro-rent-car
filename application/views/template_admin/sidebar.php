@@ -55,6 +55,30 @@
             </a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header" style="font-size: 15px;color: #fff; background-color: #6777ef;">Notifikasi Transaksi</div>
+              <div class="dropdown-list-content dropdown-list-message">
+                <a href="<?= base_url('admin/transaksi/menunggu_konfirmasi') ?>" class="dropdown-item dropdown-item-unread">
+
+                  <?php foreach ($transaksi as $trans) :
+                    if ($trans->status_pembayaran == 1) :
+                  ?>
+
+                      <div class="dropdown-item-avatar ">
+                        <img alt="image" src="<?= base_url() . 'assets/upload/mobil/' . $trans->gambar; ?>" style="width: 50px; margin-top: 8px; border-radius: 10px;">
+                      </div>
+                      <div class="dropdown-item-desc pb-0">
+                        <!-- nama -->
+                        <p style="font-weight: 800; font-size: 15px; margin-bottom:-8px;"><?= $trans->nama ?></p>
+                        <!-- pesan -->
+                        <p style="margin-bottom:-8px;"><?= $trans->merk ?></p>
+                        <p>Total Sewa : <?= format_rupiah($trans->total_sewa) ?></p>
+                        <p></p></br>
+                      </div>
+
+                    <?php endif ?>
+                  <?php endforeach; ?>
+
+                </a>
+              </div>
               <div class="mb-2 mt-2 text-center">
                 <a href="<?= base_url('admin/transaksi/menunggu_konfirmasi') ?>">Lihat Detail <i class="fas fa-chevron-right"></i></a>
               </div>
@@ -83,7 +107,7 @@
             <a href="<?= base_url('admin/dashboard') ?>"><img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" height="45" width="45" alt=""> rental mobil</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?= base_url('admin/dashboard') ?>"><img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" height="45" width="45" alt=""></a>
+            <a href="<?= base_url('admin/dashboard') ?>"><img src="<?= base_url('assets/assets_stisla') ?>/assets/img/logobrc.png" height="45" width="45" style="margin-top: 10px;" alt=""></a>
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="<?= base_url('admin/dashboard') ?>"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
