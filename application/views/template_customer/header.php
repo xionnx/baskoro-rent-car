@@ -118,7 +118,7 @@
                                     <li><a href="javascript:;"><i class="fa fa-user"></i> HALO | <?= $_SESSION['nama']; ?></a>
                                         <ul>
                                             <li><a href="<?= base_url('customer/rental/riwayat_sewa') ?>"><i class="fa fa-tag"></i> RIWAYAT SEWA</a></li>
-                                            <li><a href="<?= base_url('auth/ubah_profile') ?>"><i class="fa fa-user"></i></i> UBAH PROFILE</a></li>
+                                            <li><a href="<?= base_url('auth/ubah_profile/') . $_SESSION['id_user']; ?>"><i class="fa fa-user"></i></i> UBAH PROFILE</a></li>
                                             <li><a href="<?= base_url('auth/logout') ?>"><i class="fa fa-sign-out"></i> LOG OUT</a></li>
                                         </ul>
                                     </li>

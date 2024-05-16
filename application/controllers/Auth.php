@@ -111,14 +111,14 @@ class Auth extends CI_Controller
         }
     }
 
-    public function ubah_profile($id) {
+    public function ubah_profile($id)
+    {
         // $data['title'] = 'Ubah Profile';
         // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         // $data['user'] = $this->db->get_where('user', ['alamat' => $this->session->userdata('alamat')])->row_array();
         $data['title'] = 'Ubah Profil';
         // $data['user'] = $this->user_model->get_data(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->result();
-
         $this->load->view('ubah_profile', $data);
     }
 
