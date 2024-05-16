@@ -35,7 +35,9 @@
                             </div>
                             
                             <div class="card-body">
-                                <form method="POST" action="<?= base_url('auth/ubah_profile_aksi'); ?>" autocomplete="off">
+                            <?= $this->session->flashdata('pesan') ?>
+                            <?= $this->session->unset_userdata('pesan') ?>
+                                <form method="POST" action="<?= base_url('auth/ubah_profile_aksi'); ?>" autocomplete="off" enctype="multipart/form-data">
                                 <?php foreach ($user as $us) : ?>
                                     <div class="form-group">
                                         <label for="email_baru">Email</label>
@@ -111,6 +113,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <br>
+                                <a href="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>">
+                                    <img src="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>" width="150px">
+                                </a>
+                                <input type="file" name="gambar_user" id="gambar_user" class="form-control mt-3">
+                            </div>
                                 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
@@ -119,7 +130,7 @@
                                     </div>
 
                                     <div class="mt-2 text-center">
-                                        <a href="<?= base_url('customer/dashboard'); ?>">Kembali.</a>
+                                        <a href="<?= $_SESSION['level'] == 1 ? base_url('admin/dashboard') : base_url('customer/dashboard'); ?>">Kembali.</a>
                                     </div>
 
                                 </form>
@@ -151,5 +162,11 @@
     <script src="<?= base_url() ?>/assets/assets_stisla/assets/js/custom.js"></script>
     
 </body>
+
+<script type="text/javascript"> 
+    $(document).ready(function() {
+        $('.alert').fadeIn(300).fadeOut(2000);
+    });
+</script>
 
 </html>

@@ -30,6 +30,7 @@ class Data_Type extends CI_Controller
         $data['title'] = 'Form Tambah Data Type';
         $data['type'] = $this->type_model->get_data('type')->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);
@@ -69,6 +70,7 @@ class Data_Type extends CI_Controller
         $data['title'] = 'Form Ubah Data Type';
         $data['type'] = $this->db->query("SELECT * FROM type tp WHERE tp.id_type='$id'")->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);

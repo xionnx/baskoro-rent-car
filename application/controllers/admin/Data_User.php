@@ -31,6 +31,7 @@ class Data_User extends CI_Controller
     {
         $data['title'] = 'Form Tambah Data User';
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);
@@ -114,6 +115,7 @@ class Data_User extends CI_Controller
         $data['title'] = 'Form Ubah Data User';
         $data['user'] = $this->db->query("SELECT * FROM user us WHERE us.id_user='$id'")->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi('transaksi')->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);
@@ -178,6 +180,20 @@ class Data_User extends CI_Controller
                 if ($this->upload->do_upload('scan_kk')) {
                     $scan_kk = $this->upload->data('file_name');
                     $this->db->set('scan_kk', $scan_kk);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            $gambar_user = $_FILES['gambar_user']['name'];
+            if ($gambar_user) {
+                $config['upload_path'] = './assets/upload/gambar_user';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('gambar_user')) {
+                    $gambar_user = $this->upload->data('file_name');
+                    $this->db->set('gambar_user', $gambar_user);
                 } else {
                     echo $this->upload->display_errors();
                 }

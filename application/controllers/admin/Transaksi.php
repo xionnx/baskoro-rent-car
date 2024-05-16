@@ -87,6 +87,7 @@ class Transaksi extends CI_Controller
         $data['user'] = $this->transaksi_model->get_data('user')->result();
         $data['mobil'] = $this->transaksi_model->get_data('mobil')->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        
 
         $this->db->select('*');
         $this->db->from('transaksi');
@@ -271,6 +272,7 @@ class Transaksi extends CI_Controller
     {
         $data['title'] = 'Laporan Transaksi';
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $dari = $this->input->post('dari');
         $sampai = $this->input->post('sampai');

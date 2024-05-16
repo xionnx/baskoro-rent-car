@@ -30,6 +30,7 @@ class Data_Mobil extends CI_Controller
         $data['title'] = 'Form Tambah Data Mobil';
         $data['type'] = $this->mobil_model->get_data('type')->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);
@@ -103,6 +104,7 @@ class Data_Mobil extends CI_Controller
         $data['mobil'] = $this->db->query("SELECT * FROM mobil mb, type tp WHERE mb.id_type=tp.id_type AND mb.id_mobil='$id'")->result();
         $data['type'] = $this->mobil_model->get_data('type')->result();
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);
@@ -189,6 +191,7 @@ class Data_Mobil extends CI_Controller
         $data['title'] = 'Detail Mobil';
         $data['detail'] = $this->mobil_model->ambil_id_mobil($id);
         $data['pesan'] = $this->pesan_model->get_data_user('pesan')->result();
+        $data['transaksi'] = $this->transaksi_model->get_data_transaksi()->result();
 
         $this->load->view('template_admin/header', $data);
         $this->load->view('template_admin/sidebar', $data);

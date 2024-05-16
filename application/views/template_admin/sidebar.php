@@ -1,5 +1,4 @@
 <body>
-
   <div id="app">
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
@@ -27,11 +26,11 @@
                   ?>
 
                       <div class="dropdown-item-avatar">
-                        <img alt="image" src="<?= base_url('assets/assets_stisla'); ?>/assets/img/avatar/default-avatar.png" class="rounded-circle">
+                        <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $psn->gambar_user; ?>" class="rounded-circle">
                       </div>
                       <div class="dropdown-item-desc">
                         <!-- nama -->
-                        <p><?= $psn->nama ?></p>
+                        <p style="font-weight: 800; font-size: 15px; margin-bottom:-8px;"><?= $psn->nama ?></p>
                         <!-- pesan -->
                         <p class="mb-3"><?= $psn->isi_pesan ?></p>
                       </div>
@@ -63,7 +62,7 @@
                   ?>
 
                       <div class="dropdown-item-avatar ">
-                        <img alt="image" src="<?= base_url() . 'assets/upload/mobil/' . $trans->gambar; ?>" style="width: 50px; margin-top: 8px; border-radius: 10px;">
+                        <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $trans->gambar_user; ?>" style="width: 50px; margin-top: 8px; border-radius: 10px;">
                       </div>
                       <div class="dropdown-item-desc pb-0">
                         <!-- nama -->
@@ -86,12 +85,12 @@
           </li>
           <li class="dropdown">
             <a href="javascript:;" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="<?= base_url('assets/assets_stisla'); ?>/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+              <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $_SESSION['gambar_user']; ?>" class ="rounded-circle mr-1">
               <div class="d-sm-none d-lg-inline-block">Halo, <?= $_SESSION['nama'] ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="<?= base_url('auth/ganti_password') ?>" class="dropdown-item has-icon">
-                <i class="fas fa-unlock"></i> Ganti Password
+              <a href="<?= base_url('auth/ubah_profile/' . $_SESSION['id_user']); ?>" class="dropdown-item has-icon">
+                <i class="fas fa-unlock"></i> Ubah Profile
               </a>
               <a href="<?= base_url('auth/logout') ?>" class="dropdown-item has-icon text-danger tombol-keluar">
                 <i class="fas fa-sign-out-alt"></i> Log Out

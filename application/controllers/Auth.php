@@ -25,16 +25,16 @@ class Auth extends CI_Controller
             <body></body>
             <?php
             if ($query->num_rows() > 0) {
-                $row = $query->row();
-                $params = array(
-                    'id_user' => $row->id_user,
-                    'email' => $row->email,
-                    'nama' => $row->nama,
-                    'alamat' => $row->alamat,
-                    'level' => $row->level
-                );
-                $this->session->set_userdata($params);
-                if ($row->level == 1) {
+                $row = json_decode(json_encode($query->row()), true);
+                // $params = array(
+                //     'id_user' => $row->id_user,
+                //     'email' => $row->email,
+                //     'nama' => $row->nama,
+                //     'alamat' => $row->alamat,
+                //     'level' => $row->level
+                // );
+                $this->session->set_userdata($row);
+                if ($row['level'] == 1) {
                     ?>
                     <script>
                         Swal({
@@ -131,6 +131,7 @@ class Auth extends CI_Controller
         $alamat_baru = $this->input->post('alamat_baru');
         $password_baru = $this->input->post('password_baru');
         $password_confirm = $this->input->post('password_confirm');
+        $gambar_baru = $_FILES['gambar_user']['name'];
 
         $this->form_validation->set_rules('nama_baru', 'Nama Baru', 'required|trim|min_length[3]');
         $this->form_validation->set_rules('alamat_baru', 'Alamat Baru', 'required|trim|min_length[3]');
@@ -145,20 +146,42 @@ class Auth extends CI_Controller
             // $this->ubah_profile($data);
 
         } else {
-            $data = array(
+            $data_baru = array(
                 'nama' => $nama_baru,
                 'alamat' => $alamat_baru);
                 if (!empty($password_baru)){
-                    $data['password'] = md5($password_baru);
+                    $data_baru['password'] = md5($password_baru);
                 };
-            $id = array('id_user' => $this->session->userdata('id_user'));
+                $id = array('id_user' => $this->session->userdata('id_user'));
+                $data['user'] = json_decode(json_encode($data['user']), true);
+                var_dump($data);
 
-            $this->user_model->ubah_profile($id, $data, 'user');
+            if ($gambar_baru) {
+                $config['upload_path'] = './assets/upload/gambar_user';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+        
+                $this->load->library('upload', $config);
+        
+                if ($this->upload->do_upload('gambar_user')) {
+                    $gambar_lama = $data['user'][0]['gambar_user'];
+                    if($gambar_lama != 'default-avatar.png' && file_exists(FCPATH . 'assets/upload/gambar_user/' . $gambar_lama)) {
+                        unlink(FCPATH . 'assets/upload/gambar_user/' . $gambar_lama); }
+                    $data_baru['gambar_user'] = $this->upload->data('file_name');
+                    // var_dump(FCPATH . 'assets/upload/gambar_user/' . $gambar_lama);
+                }
+            }
+
+            $this->user_model->ubah_profile($id, $data_baru, 'user');
+            // dd($id['id_user']);
+            $idUser = $id['id_user'];
+            $updatedUser = $this->db->query("SELECT * FROM user WHERE id_user='$idUser'")->result();
+            $updatedUser = json_decode(json_encode($updatedUser), true);
+            $this->session->set_userdata($updatedUser[0]);
             $this->session->set_flashdata('pesan', '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            Password berhasil diubah, silahkan login.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            Data Profile berhasil diubah.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span></button></div>');
-            redirect('auth/login');
+            redirect('auth/ubah_profile/' . $idUser);
         }
     }
 }

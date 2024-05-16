@@ -110,6 +110,7 @@ class Register extends CI_Controller
                 $gender        = $this->input->post('gender');
                 $no_telp       = $this->input->post('no_telp');
                 $no_ktp        = $this->input->post('no_ktp');
+                $gambar_user   = 'default-avatar.png';
                 $level         = 2;
         
                 $scan_ktp = $_FILES['scan_ktp']['name'];
@@ -178,6 +179,7 @@ class Register extends CI_Controller
                     'no_ktp' => $no_ktp,
                     'scan_ktp' => $scan_ktp,
                     'scan_kk' => $scan_kk,
+                    'gambar_user' => $gambar_user,
                     'level' => $level
                 );
         

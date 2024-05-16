@@ -77,6 +77,14 @@
                                     <input type="file" name="scan_kk" class="form-control">
                                 </div>
                                 <div class="form-group">
+                                    <label>Foto</label>
+                                    <br>
+                                    <a href="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>">
+                                        <img src="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>" width="150px">
+                                    </a>
+                                    <input type="file" name="gambar_user" class="form-control">
+                                </div>
+                                <div class="form-group">
                                     <label>Level</label>
                                     <select name="level" class="form-control">
                                         <option value="<?= $us->level ?>">

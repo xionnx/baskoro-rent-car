@@ -97,3 +97,9 @@ function Indonesia2Tgl($tanggal)
 	$tanggal = "$tgl " . $namaBln[$bln] . " $thn";
 	return $tanggal;
 }
+
+function dd($data) {
+    echo '<pre>';
+    die(var_dump($data));
+    echo '</pre>';
+}
