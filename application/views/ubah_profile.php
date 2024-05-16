@@ -36,16 +36,16 @@
                             
                             <div class="card-body">
                                 <form method="POST" action="<?= base_url('auth/ubah_profile_aksi'); ?>" autocomplete="off">
-                        
+                                <?php foreach ($user as $us) : ?>
                                     <div class="form-group">
                                         <label for="email_baru">Email</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="far fa-user"></i>
+                                                    <i class="far fa-envelope"></i>
                                                 </div>
                                             </div>
-                                            <input type="email" name="email" id="email" class="form-control pwstrength" value="<?= $user['email']; ?>" tabindex="2" autofocus readonly>
+                                            <input type="email" name="email" id="email" class="form-control pwstrength" value="<?= $us->email ?>" tabindex="2" readonly>
                                         </div>
                                         <?= form_error('email', '<div class="text-small text-danger">', '</div>') ?>
                                     </div>
@@ -58,7 +58,7 @@
                                                     <i class="far fa-user"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="nama_baru" id="nama_baru" class="form-control pwstrength" value="<?= $user['nama']; ?>" tabindex="2" autofocus>
+                                            <input type="text" name="nama_baru" id="nama_baru" class="form-control pwstrength" value="<?= $us->nama; ?>" tabindex="2" autofocus>
                                             <div class="invalid-feedback">
 														Nama Tidak Boleh Kosong
 											</div>
@@ -71,10 +71,10 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="far fa-user"></i>
+                                                    <i class="far fa-map"></i>
                                                 </div>
                                             </div>
-                                            <textarea type="text" name="alamat_baru" id="alamat_baru" class="form-control pwstrength" tabindex="2" data-height="150" autofocus><?= $user['alamat']; ?></textarea>
+                                            <textarea type="text" name="alamat_baru" id="alamat_baru" class="form-control pwstrength" tabindex="2" data-height="150" autofocus><?= $us->alamat; ?></textarea>
                                         </div>
                                         <?= form_error('alamat_baru', '<div class="text-small text-danger">', '</div>') ?>
                                     </div>
@@ -123,6 +123,7 @@
                                     </div>
 
                                 </form>
+                                <?php endforeach ?>
                             </div>
                         </div>
                         <div class="simple-footer">

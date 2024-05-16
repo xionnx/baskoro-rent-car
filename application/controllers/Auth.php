@@ -111,16 +111,22 @@ class Auth extends CI_Controller
         }
     }
 
-    public function ubah_profile()
-    {
-        $data['title'] = 'Ubah Profile';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['user'] = $this->db->get_where('user', ['alamat' => $this->session->userdata('alamat')])->row_array();
+    public function ubah_profile($id) {
+        // $data['title'] = 'Ubah Profile';
+        // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        // $data['user'] = $this->db->get_where('user', ['alamat' => $this->session->userdata('alamat')])->row_array();
+        $data['title'] = 'Ubah Profil';
+        // $data['user'] = $this->user_model->get_data(['id_user' => $this->session->userdata('id_user')])->row_array();
+        $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->result();
+
         $this->load->view('ubah_profile', $data);
     }
 
     public function ubah_profile_aksi()
     {
+        $id = $this->session->userdata('id_user');
+        $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->result();
+
         $nama_baru = $this->input->post('nama_baru');
         $alamat_baru = $this->input->post('alamat_baru');
         $password_baru = $this->input->post('password_baru');
@@ -135,8 +141,8 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Ubah Profile';
-            // $this->load->view('ubah_profile', $data);
-            $this->ubah_profile($data);
+            $this->load->view('ubah_profile', $data);
+            // $this->ubah_profile($data);
 
         } else {
             $data = array(
