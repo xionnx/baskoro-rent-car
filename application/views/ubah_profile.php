@@ -120,7 +120,7 @@
                                 <a href="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>">
                                     <img src="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>" width="150px">
                                 </a>
-                                <input type="file" name="gambar_user" id="gambar_user" class="form-control mt-3">
+                                <input type="file" name="gambar_user" id="gambar_user" accept="image/png, image/jpg, image/jpeg" class="form-control mt-3">
                             </div>
                                 
                                     <div class="form-group">

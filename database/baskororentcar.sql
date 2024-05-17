@@ -152,8 +152,8 @@ CREATE TABLE `user` (
   `no_ktp` varchar(50) NOT NULL,
   `scan_ktp` varchar(255) NOT NULL,
   `scan_kk` varchar(255) NOT NULL,
-  `level` int(1) NOT NULL COMMENT '1. admin, 2. customer'
-  `gambar_user` varchar(128) NOT NULL,
+  `level` int(1) NOT NULL COMMENT '1. admin, 2. customer',
+  `gambar_user` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
