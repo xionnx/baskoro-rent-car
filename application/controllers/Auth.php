@@ -119,6 +119,16 @@ class Auth extends CI_Controller
         $data['title'] = 'Ubah Profil';
         // $data['user'] = $this->user_model->get_data(['id_user' => $this->session->userdata('id_user')])->row_array();
         $data['user'] = $this->db->query("SELECT * FROM user WHERE id_user='$id'")->result();
+
+        if ($id !== $this->session->userdata('id_user')) {
+            $ci = &get_instance();
+            if ($ci->fungsi->user_login()->level == 1) {
+                redirect('admin/dashboard');
+            } else {
+                redirect('customer/dashboard');
+            }
+        }
+
         $this->load->view('ubah_profile', $data);
     }
 
@@ -154,11 +164,12 @@ class Auth extends CI_Controller
                 };
                 $id = array('id_user' => $this->session->userdata('id_user'));
                 $data['user'] = json_decode(json_encode($data['user']), true);
-                var_dump($data);
+                // var_dump($data);
 
             if ($gambar_baru) {
                 $config['upload_path'] = './assets/upload/gambar_user';
                 $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['maintain_ratio'] = 'TRUE';
         
                 $this->load->library('upload', $config);
         
