@@ -133,15 +133,11 @@ class Data_User extends CI_Controller
         $this->form_validation->set_rules('no_ktp', 'No KTP', 'required');
         $this->form_validation->set_rules('level', 'Level', 'required');
         if ($this->input->post('password')) {
-            $this->form_validation->set_rules('password', 'Password', 'min_length[4]', [
-                'min_length' => 'minimal 4 karakter'
-            ]);
-            $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'matches[password]');
-        }
-
-        if ($this->input->post('confirm_password')) {
-            $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'matches[password]');
-        }
+        $this->form_validation->set_rules('password', 'Password', 'min_length[4]', [
+            'min_length' => 'minimal 4 karakter'
+        ]);
+        $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'matches[password]');
+    }
 
         $id = $this->input->post('id_user');
         if ($this->form_validation->run() == FALSE) {
@@ -149,60 +145,16 @@ class Data_User extends CI_Controller
         } else {
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
-            if (is_null($this->input->post('password'))) {
-            } else {
-                $password = md5($this->input->post('password'));
-            }
             $alamat = $this->input->post('alamat');
             $gender = $this->input->post('gender');
             $no_telp = $this->input->post('no_telp');
             $no_ktp = $this->input->post('no_ktp');
             $level = $this->input->post('level');
-            $scan_ktp = $_FILES['scan_ktp']['name'];
-            if ($scan_ktp) {
-                $config['upload_path'] = './assets/upload/user';
-                $config['allowed_types'] = 'jpg|jpeg|png';
-
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('scan_ktp')) {
-                    $scan_ktp = $this->upload->data('file_name');
-                    $this->db->set('scan_ktp', $scan_ktp);
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
-            $scan_kk = $_FILES['scan_kk']['name'];
-            if ($scan_kk) {
-                $config['upload_path'] = './assets/upload/user';
-                $config['allowed_types'] = 'jpg|jpeg|png';
-
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('scan_kk')) {
-                    $scan_kk = $this->upload->data('file_name');
-                    $this->db->set('scan_kk', $scan_kk);
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
-
-            $gambar_user = $_FILES['gambar_user']['name'];
-            if ($gambar_user) {
-                $config['upload_path'] = './assets/upload/gambar_user';
-                $config['allowed_types'] = 'jpg|jpeg|png';
-
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('gambar_user')) {
-                    $gambar_user = $this->upload->data('file_name');
-                    $this->db->set('gambar_user', $gambar_user);
-                } else {
-                    echo $this->upload->display_errors();
-                }
-            }
-
+            
+            // Prepare data array
             $data = array(
                 'nama' => $nama,
                 'email' => $email,
-                'password' => $password,
                 'alamat' => $alamat,
                 'gender' => $gender,
                 'no_telp' => $no_telp,
@@ -210,11 +162,52 @@ class Data_User extends CI_Controller
                 'level' => $level
             );
 
-            $where = array(
-                'id_user' => $id
-            );
+            // Only set the password if it's provided
+            if ($this->input->post('password')) {
+                $data['password'] = md5($this->input->post('password'));
+            }
 
+            // Handle file uploads
+            if ($_FILES['scan_ktp']['name']) {
+                $config['upload_path'] = './assets/upload/user';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('scan_ktp')) {
+                    $scan_ktp = $this->upload->data('file_name');
+                    $data['scan_ktp'] = $scan_ktp;
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            if ($_FILES['scan_kk']['name']) {
+                $config['upload_path'] = './assets/upload/user';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('scan_kk')) {
+                    $scan_kk = $this->upload->data('file_name');
+                    $data['scan_kk'] = $scan_kk;
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            if ($_FILES['gambar_user']['name']) {
+                $config['upload_path'] = './assets/upload/gambar_user';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('gambar_user')) {
+                    $gambar_user = $this->upload->data('file_name');
+                    $data['gambar_user'] = $gambar_user;
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            // Update user data
+            $where = array('id_user' => $id);
             $this->user_model->edit_data('user', $data, $where);
+            
             $this->session->set_flashdata('pesan', '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             Data User Berhasil Diubah
