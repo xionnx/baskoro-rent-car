@@ -204,9 +204,9 @@
 
 						<div class="sidebar-body">
 							<div class="social-icons text-center">
-								<a href="javascript:;"><i class="fa fa-facebook"></i></a>
-								<a href="javascript:;"><i class="fa fa-whatsapp"></i></a>
-								<a href="javascript:;"><i class="fa fa-instagram"></i></a>
+								<a href="https://www.facebook.com/rangga_diluc" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="https://wa.me/62895322882891?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20penyewaan%20mobil" target="_blank"><i class="fa fa-whatsapp"></i></a>
+								<a href="https://instagram.com/rangga_diluc" target="_blank"><i class="fa fa-instagram"></i></a>
 							</div>
 						</div>
 					</div>
