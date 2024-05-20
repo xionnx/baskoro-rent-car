@@ -47,7 +47,7 @@
 <!--== Scroll Top Area End ==-->
 
 <!--== WhatsApp Area Start ==-->
-<a href="https://wa.me/62895322882891?text=Bismillah..%20Assalamu%27alaikum%20warahmatullahi%20wabarakatuh..%0APerkenalkan%20nama%20saya:%0AIngin%20tanya-tanya%20tentang.." class="whatsapp" target="_blank">
+<a href="https://wa.me/62895322882891?text=Halo,%20saya%20ingin%20bertanya%20mengenai%20penyewaan%20mobil" class="whatsapp" target="_blank">
   <img src="<?= base_url() ?>assets/assets_shop/img/wa.png" alt="JSOFT">
 </a>
 <!--== WhatsApp Area End ==-->
