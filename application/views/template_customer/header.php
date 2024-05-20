@@ -115,8 +115,9 @@
                                     </ul>
                                 </li>
                                 <?php if (isset($_SESSION['level']) == 2) { ?>
-                                    <li><a href="javascript:;"><img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $_SESSION['gambar_user']; ?>" class="rounded-circle" width='25'
-                                    style="margin-rig   ht: 5px"></i> HALO | <?= $_SESSION['nama']; ?></a>
+                                    <li style="margin-top: -10px;">
+                                        <a href="javascript:;"><img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $_SESSION['gambar_user']; ?>" class="rounded-circle" width='45' style="margin-right: 5px;"></i> HALO | <?= $_SESSION['nama']; ?>
+                                        </a>
                                         <ul>
                                             <li><a href="<?= base_url('customer/rental/riwayat_sewa') ?>"><i class="fa fa-tag"></i> RIWAYAT SEWA</a></li>
                                             <li><a href="<?= base_url('auth/ubah_profile/') . $_SESSION['id_user']; ?>"><i class="fa fa-user"></i></i> UBAH PROFILE</a></li>
