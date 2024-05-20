@@ -85,7 +85,7 @@
           </li>
           <li class="dropdown">
             <a href="javascript:;" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $_SESSION['gambar_user']; ?>" class ="rounded-circle mr-1">
+              <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $_SESSION['gambar_user']; ?>" class="rounded-circle mr-1" style="width: 40px; height: 40px;">
               <div class="d-sm-none d-lg-inline-block">Halo, <?= $_SESSION['nama'] ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
