@@ -4,7 +4,7 @@
         <div class="row">
             <!-- Page Title Start -->
             <div class="col-lg-12">
-                <div class="section-title  text-center">
+                <div class="section-title text-center">
                     <h2>List Mobil</h2>
                     <span class="title-line"><i class="fa fa-car"></i></span>
                     <p>Daftar Mobil Pada Rental Kami.</p>
@@ -20,13 +20,29 @@
 <section id="car-list-area" class="section-padding">
     <div class="container">
         <div class="row">
+            <!-- Filter Area Start -->
+            <div class="col-lg-3">
+                <div class="filter-widget">
+                    <h4>Type Mobil</h4>
+                    <ul class="category-list">
+                        <br>
+                        <li><a href="#" onclick="filterCars('all')">Semua</a></li>
+                        <?php foreach ($type as $tp) : ?>
+                        <li><a href="#" onclick="filterCars('<?= $tp->kode_type ?>')"><?= $tp->nama_type ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <!-- Filter Area End -->
+
+
             <!-- Car List Content Start -->
-            <div class="col-lg-12">
+            <div class="col-lg-9">
                 <div class="car-list-content">
-                    <div class="row">
+                    <div class="row" id="car-list">
                         <!-- Single Car Start -->
                         <?php foreach ($mobil as $mb) : ?>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 car-item" data-category="<?= $mb->kode_type ?>">
                                 <div class="single-car-wrap">
                                     <div class="p-car-thumbnails">
                                         <a class="car-hover" href="<?= base_url() . 'assets/upload/mobil/' . $mb->gambar ?>">
@@ -83,3 +99,16 @@
     </div>
 </section>
 <!--== Car List Area End ==-->
+
+<script>
+    function filterCars(category) {
+        let carItems = document.querySelectorAll('.car-item');
+        carItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>

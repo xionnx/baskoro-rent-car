@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mobil_model');
+        $this->load->model('type_model');
     }
 
     public function index()
@@ -22,6 +23,7 @@ class Dashboard extends CI_Controller
     {
         $data['title'] = 'List Mobil';
         $data['mobil'] = $this->mobil_model->get_data_type('mobil')->result();
+        $data['type'] = $this->type_model->get_data('type')->result();
 
         $this->load->view('template_customer/header', $data);
         $this->load->view('customer/list_mobil', $data);
