@@ -26,7 +26,7 @@
                   ?>
 
                       <div class="dropdown-item-avatar">
-                        <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $psn->gambar_user; ?>" class="rounded-circle">
+                        <img alt="image" src="<?= base_url() . 'assets/upload/gambar_user/' . $psn->gambar_user; ?>" class="rounded-circle" style="margin-right: 5px; width: 45px; height: 45px; object-fit: fill;">
                       </div>
                       <div class="dropdown-item-desc">
                         <!-- nama -->
