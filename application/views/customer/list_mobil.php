@@ -25,7 +25,6 @@
                 <div class="filter-widget">
                     <h4>Type Mobil</h4>
                     <ul class="category-list">
-                        <br>
                         <li><a href="#" onclick="filterCars('all')">Semua</a></li>
                         <?php foreach ($type as $tp) : ?>
                         <li><a href="#" onclick="filterCars('<?= $tp->kode_type ?>')"><?= $tp->nama_type ?></a></li>
