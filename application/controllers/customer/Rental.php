@@ -87,7 +87,7 @@ class Rental extends CI_Controller
         $tglsewa = strtotime($this->input->post('tanggal_sewa'));
         $jmlhari  = 86400 * 1;
         $tgl      = $tglsewa - $jmlhari;
-        $batas_bayar = date("d-m-Y", $tgl);
+        $batas_bayar = date("d-m-Y", $tglsewa + $jmlhari);
         $pickup = $this->input->post('pickup');
         $merk = $this->input->post('nama_mobil');
         $durasi = $this->input->post('durasi');
@@ -142,17 +142,31 @@ class Rental extends CI_Controller
 
     public function konfirmasi_pembayaran($id)
     {
-        check_not_login();
+    check_not_login();
 
-        $data['id_transaksi'] = $id;
-        $data['title'] = 'Upload Bukti Pembayaran';
+    // Retrieve transaction data
+    $transaksi = $this->transaksi_model->get_transaksi_by_id($id);
 
-        $data['data_transaksi']=$this->transaksi_model->get_transaksi_by_id($id);
-        $data['mobil']=$this->mobil_model->get_mobil_by_id($data['data_transaksi']->id_mobil);
-        $this->load->view('template_customer/header', $data);
-        $this->load->view('customer/konfirmasi_pembayaran', $data);
-        $this->load->view('template_customer/footer');
-    }
+    // Calculate batas bayar
+    $tgl_sewa = strtotime($transaksi->tanggal_sewa);
+    $jmlhari  = 86400 * 1;
+    $tgl      = $tgl_sewa - $jmlhari;
+    $batas_bayar = date("d-m-Y", $tgl_sewa + $jmlhari);
+
+    // Prepare data to be passed to the view
+    $data = array(
+        'id_transaksi' => $id,
+        'title' => 'Upload Bukti Pembayaran',
+        'data_transaksi' => $transaksi,
+        'mobil' => $this->mobil_model->get_mobil_by_id($transaksi->id_mobil),
+        'batas_bayar' => $batas_bayar // Pass the batas_bayar variable
+    );
+
+    // Load views
+    $this->load->view('template_customer/header', $data);
+    $this->load->view('customer/konfirmasi_pembayaran', $data);
+    $this->load->view('template_customer/footer');
+}
 
     public function konfirmasi_pembayaran_simpan()
     {

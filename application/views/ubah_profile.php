@@ -73,7 +73,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="far fa-map"></i>
+                                                    <i class="fas fa-map-marker-alt"></i>
                                                 </div>
                                             </div>
                                             <textarea type="text" name="alamat_baru" id="alamat_baru" class="form-control pwstrength" tabindex="2" data-height="150" autofocus><?= $us->alamat; ?></textarea>
@@ -88,7 +88,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fas fa-unlock"></i>
+                                                    <i class="fas fa-lock"></i>
                                                 </div>
                                             </div>
                                             <input type="password" name="password_baru" id="password_baru" class="form-control" autofocus>
@@ -103,7 +103,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <i class="fas fa-unlock"></i>
+                                                    <i class="fas fa-lock"></i>
                                                 </div>
                                             </div>
                                             <input type="password" name="password_confirm" id="password_confirm" class="form-control">
@@ -114,14 +114,23 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Foto</label>
-                                <br>
-                                <a href="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>">
-                                    <img src="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>" width="150px">
-                                </a>
-                                <input type="file" name="gambar_user" id="gambar_user" accept="image/png, image/jpg, image/jpeg" class="form-control mt-3">
+                           <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Foto</label>
+                                    <br>
+                                    <a href="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>">
+                                        <img src="<?= base_url() . 'assets/upload/gambar_user/' . $us->gambar_user ?>" width="150px">
+                                    </a>
+                                </div>
                             </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="gambar_user">Pilih File</label>
+                                    <input type="file" name="gambar_user" id="gambar_user" accept="image/png, image/jpg, image/jpeg" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                                 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">

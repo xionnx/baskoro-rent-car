@@ -37,6 +37,8 @@
                                     </tr>
                                 </table>
                                 <br>
+                                <b>*Silahkan transfer Total Biaya Sewa ke 123456789 Bank BCA a/n RAMADHAN ARIFIYANTO maksimal tanggal <?= $batas_bayar ?>.</b>
+                                <br>
                                 <input type="file" name="bukti_pembayaran" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                             </div>
                             <button type="submit" class="btn btn-sm btn-warning mt-3 float-right">
