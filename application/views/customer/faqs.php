@@ -122,9 +122,7 @@
 											Untuk mengembalikan mobil yang sedang disewa bisa menghubungi Admin terlebih dahulu :
 											<br>
 											<a href='https://wa.me/62895322882891' class="rent-btn"><i class="fa fa-whatsapp"></i> Whatsapp</a>
-											<br>
-											<br>
-											<b>Setelah itu cari kolom 'Pengembalian Mobil' pada tabel 'Riwayat Sewa'.</b>
+											<a href="<?= base_url('customer/rental/kotak_pesan') ?>" class="rent-btn"><i class="fa fa-envelope"></i> Kotak Pesan</a>
 										</div>
 									</div>
 								</div>
@@ -142,33 +140,6 @@
 											Untuk membatalkan penyewaan bisa menuju halaman 'Riwayat Sewa' dengan menekan tombol dibawah:
 											<br>
 											<a href="<?= base_url('customer/rental/riwayat_sewa') ?>" class="rent-btn"><i class="fa fa-tag"></i> Riwayat Sewa</a>
-											<br>
-											<br>
-											<b>Setelah itu cari kolom 'Batal Sewa' pada tabel 'Riwayat Sewa'.</b>
-										</div>
-									</div>
-								</div>
-
-								<div class="card">
-									<div class="card-header" id="heading7">
-										<h5 class="mb-0"><button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-												<span class="text-white">Bagaimana cara menukarkan mobil yang rusak saat menyewa?</span>
-												<i class="fa fa-angle-down"></i>
-												<i class="fa fa-angle-up"></i>
-											</button></h5>
-									</div>
-									<div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion">
-										<div class="card-body">
-											Silahkan menghubungi kami lewat telpon/sms/wa, dengan beberapa cara:
-											<br>
-											1. Melalui kotak pesan, yakni menuju halaman 'Kotak Pesan' (Pastikan Anda sudah login) dengan menekan tombol disamping:
-											<a href="<?= base_url('customer/rental/kotak_pesan') ?>" class="rent-btn"><i class="fa fa-envelope"></i> Kotak Pesan</a>
-											<br>
-											<br>
-											2. Melalui telepon/sms/wa. Informasi nomor bisa dilihat pada card disamping kanan. Anda juga dapat melakukan pesan WhatsApp otomatis dengan menekan logo WhatsApp disamping pojok kanan website ini (Pastikan Anda sudah terhubung internet).
-											<br>
-											<br>
-											<b>*NB: Mobil yang ditukar akan sama harganya dengan mobil yang sebelumnya disewa, jadi Anda tidak perlu lagi untuk transfer uang kembali. Itupun jika mobil masih tersedia (belum ada yang menyewa), jika ada yang menyewa.. Kami mohon maaf, mobil tidak bisa ditukarkan.. Mobil yang sedang Anda sewa bisa dikembalikan atau membatalkan penyewaan.</b>
 										</div>
 									</div>
 								</div>
