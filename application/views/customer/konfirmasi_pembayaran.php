@@ -37,7 +37,7 @@
                                     </tr>
                                 </table>
                                 <br>
-                                <input type="file" name="bukti_pembayaran" class="form-control" required>
+                                <input type="file" name="bukti_pembayaran" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                             </div>
                             <button type="submit" class="btn btn-sm btn-warning mt-3 float-right">
                                 <i class="fa fa-upload"></i> Upload
