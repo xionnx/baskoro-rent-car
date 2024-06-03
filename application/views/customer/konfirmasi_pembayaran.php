@@ -39,6 +39,10 @@
                                 <br>
                                 <b>*Silahkan transfer Total Biaya Sewa ke 123456789 Bank BCA a/n RAMADHAN ARIFIYANTO maksimal tanggal <?= $batas_bayar ?>.</b>
                                 <br>
+                                <br>
+                                <b>Jika status pembayaran Ditolak.</b><br>
+                                <b>Pastikan bukti pembayaran terlihat jelas dan valid, karena admin akan meninjau bukti pembayaran terlebih dahulu.</b>
+                                <br>
                                 <input type="file" name="bukti_pembayaran" class="form-control" accept="image/png, image/jpg, image/jpeg" required>
                             </div>
                             <button type="submit" class="btn btn-sm btn-warning mt-3 float-right">

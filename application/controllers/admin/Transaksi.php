@@ -221,9 +221,11 @@ class Transaksi extends CI_Controller
     public function konfirmasi_pembayaran($id)
     {
         $id_transaksi = $id;
+        $status = 1;
         $status_pembayaran = 2;
 
         $data = array(
+            'status' => $status,
             'status_pembayaran' => $status_pembayaran
         );
 
@@ -248,7 +250,7 @@ class Transaksi extends CI_Controller
 
         $where2 = array('id_mobil' => $data->id_mobil);
 
-        $data2 = array('status_mobil' => '1');
+        $data2 = array('status_mobil' => '0');
 
         $data = array(
             'status' => '0',
