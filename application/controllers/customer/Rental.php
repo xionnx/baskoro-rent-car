@@ -30,6 +30,27 @@ class Rental extends CI_Controller
     {
         check_not_login();
 
+        $tgl_sewa = $this->input->post('tgl_sewa');
+        $tgl_kembali = $this->input->post('tgl_kembali');
+
+        // Validasi tanggal kembali tidak boleh sama dengan tanggal sewa
+        if ($tgl_kembali <= $tgl_sewa) {
+?>
+            <script>
+                Swal({
+                    title: 'Gagal',
+                    type: 'error',
+                    text: 'Tanggal Kembali harus beda dengan tanggal sewa!',
+                    onClose: () => {
+                        window.location.href = '<?= base_url('customer/rental/tambah_rental/' . $this->input->post('id_mobil')) ?>';
+                    }
+                })
+            </script>;
+        <?php
+            exit(); // Stop eksekusi selanjutnya
+        }
+
+        // Jika validasi berhasil, lanjutkan ke halaman tambah_rental_ready
         $id = $this->input->post('id_mobil');
         $mobil = $this->mobil_model->ambil_id_mobil($id);
         $tgl_sewa = $this->input->post('tgl_sewa');
@@ -52,8 +73,9 @@ class Rental extends CI_Controller
         check_not_login();
 
         ?>
-            <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
-            <body></body>
+        <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+
+        <body></body>
         <?php
         $id_mobil = $this->input->post('id_mobil');
         $tgl_sewa = strtotime($this->input->post('tanggal_sewa'));
@@ -103,14 +125,14 @@ class Rental extends CI_Controller
         );
 
         ?>
-            <script>
-                Swal({
-                        title: 'Berhasil',
-                        type: 'success',
-                        text: 'Mobil berhasil Dibooking!'
-                    })
-            </script>;
-        <?php
+        <script>
+            Swal({
+                title: 'Berhasil',
+                type: 'success',
+                text: 'Mobil berhasil Dibooking!'
+            })
+        </script>;
+    <?php
         $data['title'] = 'Detail Sewa';
         $this->load->view('template_customer/header', $data);
         $this->load->view('customer/detail_sewa', $data);
@@ -142,36 +164,37 @@ class Rental extends CI_Controller
 
     public function konfirmasi_pembayaran($id)
     {
-    check_not_login();
+        check_not_login();
 
-    // Retrieve transaction data
-    $transaksi = $this->transaksi_model->get_transaksi_by_id($id);
+        // Retrieve transaction data
+        $transaksi = $this->transaksi_model->get_transaksi_by_id($id);
 
-    // Calculate batas bayar
-    $tgl_sewa = strtotime($transaksi->tanggal_sewa);
-    $jmlhari  = 86400 * 1;
-    $tgl      = $tgl_sewa - $jmlhari;
-    $batas_bayar = date("d-m-Y", $tgl_sewa + $jmlhari);
+        // Calculate batas bayar
+        $tgl_sewa = strtotime($transaksi->tanggal_sewa);
+        $jmlhari  = 86400 * 1;
+        $tgl      = $tgl_sewa - $jmlhari;
+        $batas_bayar = date("d-m-Y", $tgl_sewa + $jmlhari);
 
-    // Prepare data to be passed to the view
-    $data = array(
-        'id_transaksi' => $id,
-        'title' => 'Upload Bukti Pembayaran',
-        'data_transaksi' => $transaksi,
-        'mobil' => $this->mobil_model->get_mobil_by_id($transaksi->id_mobil),
-        'batas_bayar' => $batas_bayar // Pass the batas_bayar variable
-    );
+        // Prepare data to be passed to the view
+        $data = array(
+            'id_transaksi' => $id,
+            'title' => 'Upload Bukti Pembayaran',
+            'data_transaksi' => $transaksi,
+            'mobil' => $this->mobil_model->get_mobil_by_id($transaksi->id_mobil),
+            'batas_bayar' => $batas_bayar // Pass the batas_bayar variable
+        );
 
-    // Load views
-    $this->load->view('template_customer/header', $data);
-    $this->load->view('customer/konfirmasi_pembayaran', $data);
-    $this->load->view('template_customer/footer');
-}
+        // Load views
+        $this->load->view('template_customer/header', $data);
+        $this->load->view('customer/konfirmasi_pembayaran', $data);
+        $this->load->view('template_customer/footer');
+    }
 
     public function konfirmasi_pembayaran_simpan()
     {
-        ?>
+    ?>
         <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+
         <body></body>
         <?php
         check_not_login();
@@ -186,17 +209,17 @@ class Rental extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('bukti_pembayaran')) {
-            ?>
+        ?>
             <script>
                 Swal({
                     title: 'Gagal',
                     type: 'error',
                     text: 'Bukti Pembayaran gagal di-Upload!'
                 }).then((result => {
-                    window.location ='<?= site_url('customer/rental/konfirmasi_pembayaran/' . $id) ?>';
+                    window.location = '<?= site_url('customer/rental/konfirmasi_pembayaran/' . $id) ?>';
                 }))
             </script>;
-            <?php
+<?php
             // echo "<script>alert('Bukti Pembayaran Gagal di-Upload')</script>";
             // echo "<script>window.location='" . base_url('customer/rental/konfirmasi_pembayaran/'. $id) . "';</script>";
             return;
