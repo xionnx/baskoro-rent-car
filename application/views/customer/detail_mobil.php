@@ -53,6 +53,10 @@
                                                     <th>Tahun</th>
                                                     <td><?= $dt->tahun ?></td>
                                                 </tr>
+                                                <tr align="center">
+                                                    <th>Denda</th>
+                                                    <td><?= $dt->denda ?> / Hari</td>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>

@@ -16,16 +16,15 @@
 <!--== Page Title Area End ==-->
 
 <!--== Contact Page Area Start ==-->
-<div class="contact-page-wrao section-padding">
+<div class="contact-page-wrap section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 m-auto">
                 <h3 class="mb-4">Riwayat Sewa</h3>
                 <?= $this->session->flashdata('pesan') ?>
                 <div class="card shadow mt-4 mb-4">
-
                     <div class="card-body">
-                        <table class="table table-hover table-striped table-bordered" id="data_table">
+                        <table class="table table-responsive table-hover table-striped table-bordered" id="data_table">
                             <thead>
                                 <tr align="center">
                                     <th>No</th>
@@ -96,14 +95,13 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="<?= base_url('customer/rental/cetak_sewa/') . $ts->id_transaksi ?>" class="btn btn-light"><i class="fa fa-file"></i></a>
+                                            <a href="<?= base_url('customer/rental/cetak_sewa/') . $ts->id_transaksi ?>" class="btn btn-light" target="_blank"><i class="fa fa-file"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
