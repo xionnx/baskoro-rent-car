@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Metode Pickup</label>
-                                        <select name="pickup" class="form-control" required>
+                                        <select name="pickup" class="form-control" required oninvalid="this.setCustomValidity('Pilih metode pickup yang akan di gunakan!')" oninput="setCustomValidity('')">
                                             <option value="">Pilih Metode Pickup</option>
                                             <option value="0">Ambil Sendiri</option>
                                             <option value="1">Pickup Sesuai Alamat</option>
