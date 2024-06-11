@@ -13,24 +13,26 @@ function check_already_login()
 
 function check_not_login()
 {
-    ?>
+?>
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/assets_shop/img/logobrc.ico" type="image/x-icon" />
     <script src="<?= base_url('assets/assets_stisla') ?>/assets/js/sweetalert2.all.min.js"></script>
+
     <body></body>
     <?php
     $ci = &get_instance();
     $user_session = $ci->session->userdata('id_user');
     if (!$user_session) {
-        ?>
+    ?>
         <script>
             Swal({
                 title: 'Anda Belum Login',
                 type: 'error',
                 text: 'Silahkan Login terlebih dahulu!'
             }).then((result => {
-                window.location ='<?= site_url('auth/login') ?>';
+                window.location = '<?= site_url('auth/login') ?>';
             }))
         </script>;
-        <?php
+<?php
     }
 }
 
@@ -76,29 +78,30 @@ date_default_timezone_set("Asia/Jakarta");
 # Fungsi untuk membalik tanggal dari format English (Y-m-d) -> Indo (d-m-Y)
 function IndonesiaTgl($tanggal)
 {
-	$tgl = substr($tanggal, 8, 2);
-	$bln = substr($tanggal, 5, 2);
-	$thn = substr($tanggal, 0, 4);
-	$tanggal = "$tgl-$bln-$thn";
-	return $tanggal;
+    $tgl = substr($tanggal, 8, 2);
+    $bln = substr($tanggal, 5, 2);
+    $thn = substr($tanggal, 0, 4);
+    $tanggal = "$tgl-$bln-$thn";
+    return $tanggal;
 }
 
 # Fungsi untuk membalik tanggal dari format English (Y-m-d) -> Indo (d-m-Y)
 function Indonesia2Tgl($tanggal)
 {
-	$namaBln = array(
-		"01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni",
-		"07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember"
-	);
+    $namaBln = array(
+        "01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni",
+        "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember"
+    );
 
-	$tgl = substr($tanggal, 8, 2);
-	$bln = substr($tanggal, 5, 2);
-	$thn = substr($tanggal, 0, 4);
-	$tanggal = "$tgl " . $namaBln[$bln] . " $thn";
-	return $tanggal;
+    $tgl = substr($tanggal, 8, 2);
+    $bln = substr($tanggal, 5, 2);
+    $thn = substr($tanggal, 0, 4);
+    $tanggal = "$tgl " . $namaBln[$bln] . " $thn";
+    return $tanggal;
 }
 
-function dd($data) {
+function dd($data)
+{
     echo '<pre>';
     die(var_dump($data));
     echo '</pre>';
