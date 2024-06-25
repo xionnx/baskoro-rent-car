@@ -160,7 +160,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `alamat`, `gender`, `no_telp`, `no_ktp`, `scan_ktp`, `scan_kk`, `level`, `gambar_user`) VALUES
-(1, 'Admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'Malang', 'Laki-laki', '085334424941', '213123123112', 'KTP-1544523262.png', 'KK.PNG', 1, 'Vestia_Zeta_mascot_Bazo.png'),
+(1, 'Admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'Malang', 'Laki-laki', '085334424941', '213123123112', 'KTP-1544523262.png', 'KK.PNG', 1, 'default-avatar.png'),
 (9, 'Madit', 'madit@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Jalan Damai', 'Laki-laki', '085161107937', '2837219837123', 'image_(1).png', '65febf5c3290a2cad9a100c9V51y6Uc005.jpeg', 2, ''),
 (10, 'misbah', 'misbah@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'mmmsmssm', 'Laki-laki', '8888888', '888888', 'upscale.png', 'upscale1.png', 2, ''),
 (11, 'xionn', 'xionn@gmail.com', '40061d9560884767b3cfffc4925f7f21', 'Jalan Damaii', 'Laki-laki', '08515121', '1231231', 'National_Train_Day_Instagram_Post_.png', 'qris_xionn.jpg', 2, ''),
