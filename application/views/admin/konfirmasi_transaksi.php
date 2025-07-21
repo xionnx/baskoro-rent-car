@@ -13,7 +13,8 @@
       <!-- <?php var_dump($tr) ?> -->
       <div class="form-group">
         <label for="">Tanggal Pengembalian</label>
-        <input type="date" name="tanggal_pengembalian" class="form-control" value="<?= $tr->tanggal_pengembalian; ?>">
+        <input type="date" name="tanggal_pengembalian" class="form-control" value="<?= $tr->tanggal_pengembalian; ?>" min="<?= $tr->tanggal_sewa; ?>" required oninvalid="this.setCustomValidity('Tanggal pengembalian wajib diisi!')"
+    oninput="this.setCustomValidity('')">
       </div>
       <!-- <div class="form-group">
         <label for="">Status Pengembalian</label>

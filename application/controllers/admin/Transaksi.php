@@ -330,8 +330,11 @@ class Transaksi extends CI_Controller
 
         $x = strtotime($tanggal_pengembalian);
         $y = strtotime($tanggal_kembali);
-        $selisih = abs($x - $y)/(60*60*24);
-        $total_denda = $selisih * $mobil->denda;
+        $selisih = ($x - $y) / (60*60*24);
+        $total_denda = 0;
+        if ($selisih > 0) {
+            $total_denda = $selisih * $mobil->denda;
+        }
     
         $data = array(
           'tanggal_pengembalian'    => $tanggal_pengembalian,
